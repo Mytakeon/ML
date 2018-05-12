@@ -1,8 +1,13 @@
-import pandas as pd
+"""
+Multiple linear regression on a stock price history
+See Sendtex ML tutorial playlist on Youtube.
+"""
+
+
 import quandl
 import math
 import numpy as np
-from sklearn import preprocessing, svm, model_selection
+from sklearn import preprocessing, model_selection
 from sklearn.linear_model import LinearRegression
 
 df = quandl.get('WIKI/GOOGL')  # dataframe
@@ -14,7 +19,7 @@ df['change'] = (df['Adj. Close'] - df['Adj. Open']) / df['Adj. Open'] * 100.0
 
 df = df[['Adj. Close', 'HL', 'change', 'Adj. Volume']]
 
-forecast_col = 'Adj. Close'  # Variable because we might want to forecast something else in future
+forecast_col = 'Adj. Close'  # Set as variable because we might want to forecast something else in future
 
 # Often missing data. So replace it with dummy value and tell algo to treat it as an outlier
 df.fillna(-9999, inplace=True)  # Drops the empty rows

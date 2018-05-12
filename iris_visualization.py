@@ -1,4 +1,9 @@
-# Statistical Summary
+"""
+Different methods to look at the iris dataset. Uses pandas and seaborn for data visualization, and sklearn for PCA and
+Decision tree.
+"""
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas

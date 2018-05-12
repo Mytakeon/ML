@@ -1,3 +1,7 @@
+"""
+See scikit-examples
+"""
+
 import time
 import warnings
 
@@ -10,12 +14,8 @@ from sklearn.preprocessing import StandardScaler
 from itertools import cycle, islice
 
 np.random.seed(0)
-
-# ============
-# Generate datasets. We choose the size big enough to see the scalability
-# of the algorithms, but not too big to avoid too long running times
-# ============
 n_samples = 1000
+
 noisy_circles = datasets.make_circles(n_samples=n_samples, factor=.5,
                                       noise=.05)
 noisy_moons = datasets.make_moons(n_samples=n_samples, noise=.05)
@@ -50,19 +50,9 @@ default_base = {'quantile': .3,
                 'n_neighbors': 10,
                 'n_clusters': 3}
 
-# datasets = [
-#     (noisy_circles, {'damping': .77, 'preference': -240,
-#                      'quantile': .2, 'n_clusters': 2}),
-#     (noisy_moons, {'damping': .75, 'preference': -220, 'n_clusters': 2}),
-#     (varied, {'eps': .18, 'n_neighbors': 2}),
-#     (aniso, {'eps': .15, 'n_neighbors': 2}),
-#     (blobs, {}),
-#     (no_structure, {})]
-
 datasets = [
     (noisy_circles, {'damping': .77, 'preference': -240,
                      'quantile': .2, 'n_clusters': 2}),
-    # (noisy_moons, {'damping': .75, 'preference': -220, 'n_clusters': 2}),
     (varied, {'eps': .18, 'n_neighbors': 2}),
     (aniso, {'eps': .15, 'n_neighbors': 2}),
     (blobs, {}) ]
@@ -107,27 +97,12 @@ for i_dataset, (dataset, algo_params) in enumerate(datasets):
     gmm = mixture.GaussianMixture(
         n_components=params['n_clusters'], covariance_type='full')
 
-    # clustering_algorithms = (
-    #     ('MiniBatchKMeans', two_means),
-    #     ('AffinityPropagation', affinity_propagation),
-    #     ('MeanShift', ms),
-    #     ('SpectralClustering', spectral),
-    #     ('Ward', ward),
-    #     ('AgglomerativeClustering', average_linkage),
-    #     ('DBSCAN', dbscan),
-    #     ('Birch', birch),
-    #     ('GaussianMixture', gmm)
-    # )
-
     clustering_algorithms = (
         ('MiniBatchKMeans', two_means),
-        # ('AffinityPropagation', affinity_propagation),
         ('MeanShift', ms),
         ('SpectralClustering', spectral),
-        # ('Ward', ward),
         ('AgglomerativeClustering', average_linkage),
         ('DBSCAN', dbscan),
-        # ('Birch', birch),
         ('GaussianMixture', gmm)
     )
 
